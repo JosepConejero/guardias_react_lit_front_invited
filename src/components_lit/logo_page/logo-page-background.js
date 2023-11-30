@@ -18,9 +18,9 @@ class LogoPageBackground extends LitElement {
   render() {
     return html`
       <div
-        className="logo-container animate__animated animate__fadeIn animate__faster"
+        class="logo-container animate__animated animate__fadeIn animate__faster"
       >
-        ${this.innerHTML}
+        <slot></slot>
       </div>
     `;
   }

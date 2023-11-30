@@ -2,21 +2,16 @@ import { Link as RouterLink } from "react-router-dom";
 import Google from "@mui/icons-material/Google";
 import { Button, Grid, Link, TextField, Typography } from "@mui/material";
 import "../../styles.css";
-import "../../components_lit/auth_layout/auth-layout";
-import "../../components_lit/login_page/login-page";
 
 import { AuthLayout } from "../layout/AuthLayout";
 import { useAuthStore, useForm } from "../../hooks";
 import { useEffect, useMemo } from "react";
 import Swal from "sweetalert2";
-import { LoginPageLit } from "../../components_lit/lit_components_wrappers/LoginPageLit";
 
 const formFields = {
   email: "",
   password: "",
 };
-
-const isLit = true;
 
 export const LoginPage = () => {
   const { status, startLogin, errorMessage } = useAuthStore();
@@ -34,22 +29,6 @@ export const LoginPage = () => {
       Swal.fire("Error en la autenticación", errorMessage, "error");
     }
   }, [errorMessage]);
-
-  if (isLit)
-    return (
-      <>
-        <auth-layout>
-          <LoginPageLit
-            title="Login"
-            isAuthenticating={isAuthenticating}
-            email={email}
-            password={password}
-            onInputChange={onInputChange}
-            onSubmit={onSubmit}
-          />
-        </auth-layout>
-      </>
-    );
 
   return (
     <AuthLayout title="Login">
